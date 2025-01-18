@@ -1,12 +1,19 @@
-version: '3.8'
-
 services:
-  web-service:
+  app:
     build:
       context: .
+    container_name: my-python-app
     ports:
-      - "5000:5000"
+      - "4898:4898"
     environment:
-      KAFKA_BOOTSTRAP_SERVERS: "host.docker.internal:29092"
-    depends_on:
-      - kafka
+      KAFKA_BROKER: kafka:29092
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python app.py
+    networks:
+      - sberflow-net
+
+networks:
+  sberflow-net:
+    external: true

@@ -40,4 +40,4 @@ if __name__ == "__main__":
     threading.Thread(target=kafka_worker, daemon=True).start()
 
     # Запускаем Flask сервер
-    app.run(host="0.0.0.0", port=4999, debug=True)
+    app.run(host="0.0.0.0", port=4898, debug=True)
